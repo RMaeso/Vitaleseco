@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Constantes vitales · Economía española</title>
+  <meta name="description" content="El pulso de la economía española en una página: crecimiento, empleo, inflación, condiciones financieras, vivienda, sector exterior y cuentas públicas, comparados con la eurozona y actualizados a diario.">
+  <meta name="theme-color" content="#14213d">
+  <meta property="og:title" content="Constantes vitales · Economía española">
+  <meta property="og:description" content="El pulso de la economía española en una página de gráficos, actualizada a medida que salen los datos.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314213d'/%3E%3Cpath d='M4 18h6l3-8 5 14 3-6h7' fill='none' stroke='%23f2b134' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <p class="kicker">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 18h7l3-8 5 14 3-6h10" /></svg>
+        Constantes vitales
+      </p>
+      <h1>La economía española, en una página</h1>
+      <p class="lede">Crecimiento, empleo, precios, financiación, vivienda, sector exterior y cuentas públicas, comparados con la eurozona. Los datos se actualizan solos cada día a partir de Eurostat y el Banco Central Europeo.</p>
+      <p class="updated" id="updated">Cargando datos…</p>
+    </div>
+  </header>
+
+  <nav class="toolbar" aria-label="Secciones y periodo">
+    <div class="wrap toolbar-inner">
+      <div class="sections-nav" id="sections-nav"></div>
+      <div class="range" role="radiogroup" aria-label="Periodo mostrado">
+        <button type="button" role="radio" data-years="5">5 años</button>
+        <button type="button" role="radio" data-years="10" aria-checked="true">10 años</button>
+        <button type="button" role="radio" data-years="0">Desde 2000</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section class="summary" aria-labelledby="summary-title">
+      <h2 id="summary-title" class="visually-hidden">Resumen</h2>
+      <div class="tiles" id="tiles"></div>
+    </section>
+    <div id="content"></div>
+    <div id="errors"></div>
+  </main>
+
+  <footer class="wrap footer">
+    <p><strong>Fuentes.</strong> Eurostat (Contabilidad Nacional, EPA armonizada, índices de precios de vivienda, finanzas públicas, turismo y balanza de pagos) y Banco Central Europeo (IPCA, tipos de interés y tipos bancarios). Las series de España proceden en origen del INE, el Banco de España y la IGAE. "Eurozona" es el agregado de composición cambiante.</p>
+    <p><strong>Cómo leerla.</strong> Cada tarjeta muestra el último dato de España, su cambio respecto al periodo anterior y la comparación con la eurozona. Pasa el dedo o el ratón por un gráfico para ver los valores de cada fecha.</p>
+    <p>Inspirada en <a href="https://econvitals.org/">Econvitals</a>, de Jason Furman.</p>
+  </footer>
+
+  <div class="tooltip" id="tooltip" role="status" aria-live="polite" hidden></div>
+  <script src="app.js" defer></script>
+</body>
+</html>

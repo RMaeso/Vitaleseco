@@ -1,0 +1,365 @@
+{
+  "_comentario": "Catálogo de indicadores. Cada serie tiene una o varias 'sources' que se prueban en orden hasta que una responde. Para añadir un indicador, copia uno existente y cambia los filtros.",
+  "eurostat_area_euro": ["EA", "EA21", "EA20"],
+  "sections": [
+    {
+      "id": "crecimiento",
+      "title": "Crecimiento",
+      "intro": "Cuánto produce la economía y qué esperan empresas y consumidores.",
+      "indicators": [
+        {
+          "id": "pib_tt",
+          "title": "PIB, variación trimestral",
+          "unit": "%",
+          "decimals": 1,
+          "zero_line": true,
+          "headline": true,
+          "headline_label": "PIB (t/t)",
+          "note": "Volumen encadenado, corregido de estacionalidad y calendario.",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "eurostat", "dataset": "namq_10_gdp", "filters": {"na_item": "B1GQ", "unit": "CLV_PCH_PRE", "s_adj": "SCA"}}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "eurostat", "dataset": "namq_10_gdp", "filters": {"na_item": "B1GQ", "unit": "CLV_PCH_PRE", "s_adj": "SCA"}}]}
+          ]
+        },
+        {
+          "id": "pib_ia",
+          "title": "PIB, variación interanual",
+          "unit": "%",
+          "decimals": 1,
+          "zero_line": true,
+          "note": "Respecto al mismo trimestre del año anterior.",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "eurostat", "dataset": "namq_10_gdp", "filters": {"na_item": "B1GQ", "unit": "CLV_PCH_SM", "s_adj": "SCA"}}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "eurostat", "dataset": "namq_10_gdp", "filters": {"na_item": "B1GQ", "unit": "CLV_PCH_SM", "s_adj": "SCA"}}]}
+          ]
+        },
+        {
+          "id": "prod_industrial",
+          "title": "Producción industrial, interanual",
+          "unit": "%",
+          "decimals": 1,
+          "zero_line": true,
+          "note": "Industria (B-D), corregida de efectos de calendario.",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "eurostat", "dataset": "sts_inpr_m", "filters": {"indic_bt": "PRD", "nace_r2": "B-D", "s_adj": "CA", "unit": "PCH_SM"}}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "eurostat", "dataset": "sts_inpr_m", "filters": {"indic_bt": "PRD", "nace_r2": "B-D", "s_adj": "CA", "unit": "PCH_SM"}}]}
+          ]
+        },
+        {
+          "id": "esi",
+          "title": "Sentimiento económico (ESI)",
+          "unit": "",
+          "decimals": 1,
+          "baseline": 100,
+          "note": "Índice de la Comisión Europea; 100 = media de largo plazo.",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "eurostat", "dataset": "ei_bssi_m_r2", "filters": {"indic": "BS-ESI-I", "s_adj": "SA"}}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "eurostat", "dataset": "ei_bssi_m_r2", "filters": {"indic": "BS-ESI-I", "s_adj": "SA"}}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "empleo",
+      "title": "Empleo",
+      "intro": "Paro, creación de empleo y salarios.",
+      "indicators": [
+        {
+          "id": "paro",
+          "title": "Tasa de paro",
+          "unit": "%",
+          "decimals": 1,
+          "headline": true,
+          "headline_label": "Paro",
+          "lower_is_better": true,
+          "note": "Desestacionalizada, % de la población activa.",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "eurostat", "dataset": "une_rt_m", "filters": {"age": "TOTAL", "sex": "T", "s_adj": "SA", "unit": "PC_ACT"}}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "eurostat", "dataset": "une_rt_m", "filters": {"age": "TOTAL", "sex": "T", "s_adj": "SA", "unit": "PC_ACT"}}]}
+          ]
+        },
+        {
+          "id": "paro_juvenil",
+          "title": "Paro juvenil (menores de 25)",
+          "unit": "%",
+          "decimals": 1,
+          "lower_is_better": true,
+          "note": "Desestacionalizada.",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "eurostat", "dataset": "une_rt_m", "filters": {"age": "Y_LT25", "sex": "T", "s_adj": "SA", "unit": "PC_ACT"}}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "eurostat", "dataset": "une_rt_m", "filters": {"age": "Y_LT25", "sex": "T", "s_adj": "SA", "unit": "PC_ACT"}}]}
+          ]
+        },
+        {
+          "id": "empleo_ia",
+          "title": "Ocupados, variación interanual",
+          "unit": "%",
+          "decimals": 1,
+          "zero_line": true,
+          "note": "Personas ocupadas según Contabilidad Nacional.",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "eurostat", "dataset": "namq_10_pe", "filters": {"na_item": "EMP_DC", "unit": "PCH_SM_PER", "s_adj": "SCA"}}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "eurostat", "dataset": "namq_10_pe", "filters": {"na_item": "EMP_DC", "unit": "PCH_SM_PER", "s_adj": "SCA"}}]}
+          ]
+        },
+        {
+          "id": "salarios",
+          "title": "Salarios por hora, interanual",
+          "unit": "%",
+          "decimals": 1,
+          "zero_line": true,
+          "note": "Componente salarial del índice de costes laborales (B-S).",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "eurostat", "dataset": "lc_lci_r2_q", "filters": {"lcstruct": "D11", "nace_r2": "B-S", "s_adj": "CA", "unit": "PCH_SM"}}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "eurostat", "dataset": "lc_lci_r2_q", "filters": {"lcstruct": "D11", "nace_r2": "B-S", "s_adj": "CA", "unit": "PCH_SM"}}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inflacion",
+      "title": "Inflación",
+      "intro": "Precios de consumo armonizados (IPCA). Objetivo del BCE: 2%.",
+      "indicators": [
+        {
+          "id": "ipca",
+          "title": "Inflación general (IPCA)",
+          "unit": "%",
+          "decimals": 1,
+          "target": 2,
+          "zero_line": true,
+          "headline": true,
+          "headline_label": "Inflación",
+          "note": "Tasa interanual.",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [
+              {"type": "ecb", "flow": "HICP", "key": "M.ES.N.000000.4D0.ANR"}, {"type": "ecb", "flow": "ICP", "key": "M.ES.N.000000.4.ANR"},
+              {"type": "eurostat", "dataset": "prc_hicp_manr", "filters": {"coicop": "CP00", "unit": "RCH_A"}}
+            ]},
+            {"label": "Eurozona", "geo": "EA", "sources": [
+              {"type": "ecb", "flow": "HICP", "key": "M.U2.N.000000.4D0.ANR"}, {"type": "ecb", "flow": "ICP", "key": "M.U2.N.000000.4.ANR"},
+              {"type": "eurostat", "dataset": "prc_hicp_manr", "filters": {"coicop": "CP00", "unit": "RCH_A"}}
+            ]}
+          ]
+        },
+        {
+          "id": "ipca_sub",
+          "title": "Inflación subyacente",
+          "unit": "%",
+          "decimals": 1,
+          "target": 2,
+          "zero_line": true,
+          "note": "Sin energía, alimentos, alcohol ni tabaco. Tasa interanual.",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [
+              {"type": "ecb", "flow": "HICP", "key": "M.ES.N.XEF000.4D0.ANR"}, {"type": "ecb", "flow": "ICP", "key": "M.ES.N.XEF000.4.ANR"},
+              {"type": "eurostat", "dataset": "prc_hicp_manr", "filters": {"coicop": "TOT_X_NRG_FOOD", "unit": "RCH_A"}}
+            ]},
+            {"label": "Eurozona", "geo": "EA", "sources": [
+              {"type": "ecb", "flow": "HICP", "key": "M.U2.N.XEF000.4D0.ANR"}, {"type": "ecb", "flow": "ICP", "key": "M.U2.N.XEF000.4.ANR"},
+              {"type": "eurostat", "dataset": "prc_hicp_manr", "filters": {"coicop": "TOT_X_NRG_FOOD", "unit": "RCH_A"}}
+            ]}
+          ]
+        },
+        {
+          "id": "ipca_servicios",
+          "title": "Inflación de servicios",
+          "unit": "%",
+          "decimals": 1,
+          "target": 2,
+          "zero_line": true,
+          "note": "Tasa interanual.",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "ecb", "flow": "HICP", "key": "M.ES.N.SERV00.4D0.ANR"}, {"type": "ecb", "flow": "ICP", "key": "M.ES.N.SERV00.4.ANR"}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "ecb", "flow": "HICP", "key": "M.U2.N.SERV00.4D0.ANR"}, {"type": "ecb", "flow": "ICP", "key": "M.U2.N.SERV00.4.ANR"}]}
+          ]
+        },
+        {
+          "id": "ipca_energia",
+          "title": "Inflación de la energía",
+          "unit": "%",
+          "decimals": 1,
+          "zero_line": true,
+          "note": "Tasa interanual.",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "ecb", "flow": "HICP", "key": "M.ES.N.NRGY00.4D0.ANR"}, {"type": "ecb", "flow": "ICP", "key": "M.ES.N.NRGY00.4.ANR"}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "ecb", "flow": "HICP", "key": "M.U2.N.NRGY00.4D0.ANR"}, {"type": "ecb", "flow": "ICP", "key": "M.U2.N.NRGY00.4.ANR"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "financiero",
+      "title": "Condiciones financieras",
+      "intro": "Lo que cuesta financiarse: Estado, bancos y familias.",
+      "indicators": [
+        {
+          "id": "prima_riesgo",
+          "title": "Prima de riesgo",
+          "unit": " pb",
+          "decimals": 0,
+          "headline": true,
+          "headline_label": "Prima de riesgo",
+          "lower_is_better": true,
+          "note": "Diferencial del bono a 10 años de España frente a Alemania, en puntos básicos (media mensual).",
+          "series": [
+            {"label": "España − Alemania", "derive": {"op": "diff_bp", "a": "bono10_ES", "b": "bono10_DE"}}
+          ]
+        },
+        {
+          "id": "bono10",
+          "title": "Rentabilidad del bono a 10 años",
+          "unit": "%",
+          "decimals": 2,
+          "note": "Tipos de largo plazo de convergencia (media mensual).",
+          "series": [
+            {"label": "España", "ref": "bono10_ES", "sources": [{"type": "ecb", "flow": "IRS", "key": "M.ES.L.L40.CI.0000.EUR.N.Z"}]},
+            {"label": "Alemania", "ref": "bono10_DE", "sources": [{"type": "ecb", "flow": "IRS", "key": "M.DE.L.L40.CI.0000.EUR.N.Z"}]}
+          ]
+        },
+        {
+          "id": "tipos",
+          "title": "Tipo del BCE y Euríbor a 12 meses",
+          "unit": "%",
+          "decimals": 2,
+          "zero_line": true,
+          "note": "Facilidad de depósito del BCE (fin de mes) y Euríbor a 12 meses (media mensual).",
+          "series": [
+            {"label": "Euríbor 12m", "sources": [{"type": "ecb", "flow": "FM", "key": "M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA"}]},
+            {"label": "Depósito BCE", "sources": [{"type": "ecb", "flow": "FM", "key": "D.U2.EUR.4F.KR.DFR.LEV", "to_monthly": "last"}]}
+          ]
+        },
+        {
+          "id": "credito_empresas",
+          "title": "Tipo de los préstamos nuevos a empresas",
+          "unit": "%",
+          "decimals": 2,
+          "note": "Préstamos a sociedades no financieras, operaciones nuevas, coste compuesto.",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "ecb", "flow": "MIR", "key": "M.ES.B.A2I.AM.R.A.2240.EUR.N"}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "ecb", "flow": "MIR", "key": "M.U2.B.A2I.AM.R.A.2240.EUR.N"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vivienda",
+      "title": "Vivienda",
+      "intro": "Precios, alquileres y coste de las hipotecas.",
+      "indicators": [
+        {
+          "id": "precio_vivienda",
+          "title": "Precio de la vivienda, interanual",
+          "unit": "%",
+          "decimals": 1,
+          "zero_line": true,
+          "headline": true,
+          "headline_label": "Precio vivienda",
+          "note": "Índice de precios de vivienda (nueva y usada). En España lo elabora el INE.",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "eurostat", "dataset": "prc_hpi_q", "filters": {"purchase": "TOTAL", "unit": "RCH_A"}}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "eurostat", "dataset": "prc_hpi_q", "filters": {"purchase": "TOTAL", "unit": "RCH_A"}}]}
+          ]
+        },
+        {
+          "id": "alquiler",
+          "title": "Alquileres, interanual",
+          "unit": "%",
+          "decimals": 1,
+          "zero_line": true,
+          "note": "Componente de alquiler de vivienda del IPCA. Mide contratos en vigor, no solo los nuevos.",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "ecb", "flow": "HICP", "key": "M.ES.N.041000.4D0.ANR"}, {"type": "ecb", "flow": "ICP", "key": "M.ES.N.041000.4.ANR"}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "ecb", "flow": "HICP", "key": "M.U2.N.041000.4D0.ANR"}, {"type": "ecb", "flow": "ICP", "key": "M.U2.N.041000.4.ANR"}]}
+          ]
+        },
+        {
+          "id": "tipo_hipotecas",
+          "title": "Tipo de las hipotecas nuevas",
+          "unit": "%",
+          "decimals": 2,
+          "note": "Préstamos a hogares para vivienda, operaciones nuevas, coste compuesto.",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "ecb", "flow": "MIR", "key": "M.ES.B.A2C.AM.R.A.2250.EUR.N"}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "ecb", "flow": "MIR", "key": "M.U2.B.A2C.AM.R.A.2250.EUR.N"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exterior",
+      "title": "Sector exterior",
+      "intro": "Exportaciones, turismo y saldo con el resto del mundo.",
+      "indicators": [
+        {
+          "id": "exportaciones",
+          "title": "Exportaciones, interanual",
+          "unit": "%",
+          "decimals": 1,
+          "zero_line": true,
+          "note": "Bienes y servicios en volumen (Contabilidad Nacional).",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "eurostat", "dataset": "namq_10_gdp", "filters": {"na_item": "P6", "unit": "CLV_PCH_SM", "s_adj": "SCA"}}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "eurostat", "dataset": "namq_10_gdp", "filters": {"na_item": "P6", "unit": "CLV_PCH_SM", "s_adj": "SCA"}}]}
+          ]
+        },
+        {
+          "id": "turismo",
+          "title": "Pernoctaciones de turistas extranjeros, interanual",
+          "unit": "%",
+          "decimals": 1,
+          "zero_line": true,
+          "note": "Noches en alojamientos turísticos de no residentes; variación sobre el mismo mes del año anterior.",
+          "series": [
+            {"label": "España", "geo": "ES", "transform": "yoy", "sources": [{"type": "eurostat", "dataset": "tour_occ_nim", "filters": {"c_resid": "FOR", "unit": "NR", "nace_r2": "I551-I553"}}]}
+          ]
+        },
+        {
+          "id": "cuenta_corriente",
+          "title": "Saldo por cuenta corriente",
+          "unit": "% PIB",
+          "decimals": 1,
+          "zero_line": true,
+          "note": "Saldo trimestral en % del PIB del trimestre (sin desestacionalizar: el verano turístico eleva el saldo).",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "eurostat", "dataset": "bop_gdp6_q", "filters": {"freq": "Q", "bop_item": "CA", "stk_flow": "BAL", "partner": "WRL_REST", "unit": "PC_GDP", "s_adj": "NSA"}}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "publicas",
+      "title": "Cuentas públicas",
+      "intro": "Deuda y déficit de las Administraciones Públicas (definición de Maastricht).",
+      "indicators": [
+        {
+          "id": "deuda",
+          "title": "Deuda pública",
+          "unit": "% PIB",
+          "decimals": 1,
+          "headline": true,
+          "headline_label": "Deuda pública",
+          "lower_is_better": true,
+          "note": "Deuda bruta consolidada, trimestral.",
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "eurostat", "dataset": "gov_10q_ggdebt", "filters": {"na_item": "GD", "sector": "S13", "unit": "PC_GDP"}}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "eurostat", "dataset": "gov_10q_ggdebt", "filters": {"na_item": "GD", "sector": "S13", "unit": "PC_GDP"}}]}
+          ]
+        },
+        {
+          "id": "deficit",
+          "title": "Saldo público (déficit −, superávit +)",
+          "unit": "% PIB",
+          "decimals": 1,
+          "zero_line": true,
+          "note": "Capacidad/necesidad de financiación anual. Umbral del Pacto de Estabilidad: −3%.",
+          "target": -3,
+          "series": [
+            {"label": "España", "geo": "ES", "sources": [{"type": "eurostat", "dataset": "gov_10dd_edpt1", "filters": {"na_item": "B9", "sector": "S13", "unit": "PC_GDP"}}]},
+            {"label": "Eurozona", "geo": "EA", "sources": [{"type": "eurostat", "dataset": "gov_10dd_edpt1", "filters": {"na_item": "B9", "sector": "S13", "unit": "PC_GDP"}}]}
+          ]
+        }
+      ]
+    }
+  ]
+}
